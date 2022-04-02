@@ -1,87 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Web site created using create-snowpack-app"
-    />
-    <!--
-      Snowpack will replace %PUBLIC_URL% with the value you have for `baseUrl` in `snowpack.config.js`.
-      Make sure to update it with your GitHub Page URL. https://<your-username>.github.io/<your-repo-name>
 
-      More about config options:
-      - https://www.snowpack.dev/reference/configuration#buildoptions.baseurl
-    -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="%PUBLIC_URL%/_dist_/index.css"
-    />
-    <title>Snowpack & Tailwind App</title>
-  </head>
-  <body>
-    <!--
-      This HTML file is a template.
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Web site creado para organizar mejor el tiempo usando Time Blocking, una técnica para ordenar visualmente tareas a través de bloques." />
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/_dist_/index.css" />
+  <title>Time blocking</title>
+</head>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
+<body class="flex w-screen">
 
-      Start modyfing from here.
-    -->
-    <div class="py-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center">
-        <p
-          class="text-base leading-6 text-indigo-600 font-semibold tracking-wide uppercase"
-        >
-          Snowpack
-        </p>
-        <h3
-          class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
-        >
-          Tailwind template
-        </h3>
-        <p class="mt-4 max-w-2xl text-xl leading-7 text-gray-500 mx-auto">
-          Use this template to build awesome websites using Snowpack and
-          Tailwind. It also includes Prettier and automatic publish to GitHub
-          pages using GitHub Actions. Learn more:
-        </p>
-        <ul
-          class="text-xl leading-7 sm:flex justify-around sm:max-w-2xl sm:mx-auto mt-10"
-        >
-          <li class="my-4 p-4 px-6 bg-gray-300 hover:bg-gray-500">
-            <a href="https://snowpack.dev" target="_blank">snowpack.dev</a>
-          </li>
-          <li class="my-4 p-4 px-6 bg-gray-300 hover:bg-gray-500">
-            <a href="https://tailwindcss.com" target="_blank"
-              >tailwindcss.com</a
-            >
-          </li>
-          <li class="my-4 p-4 px-6 bg-gray-300 hover:bg-gray-500">
-            <a
-              href="https://docs.github.com/en/free-pro-team@latest/actions"
-              target="_blank"
-              >GitHub Actions</a
-            >
-          </li>
-        </ul>
-        <p class="mt-14 text-xl leading-7 text-gray-500">Start using it:</p>
-        <div class="my-5 bg-gray-800 p-5 text-white">
-          <code>
-            npx create-snowpack-app my-app --template snowpack-template-tailwind
-          </code>
-        </div>
-        <p class="mt-16 text-xl leading-7 text-gray-500 underline">
-          <a href="https://github.com/jonalvarezz/snowpack-template-tailwind"
-            >See on GitHub</a
-          >
-        </p>
-      </div>
+  <main class="py-10 flex flex-col px-4 sm:px-6 lg:flex-row lg:px-8 w-screen mx-auto">
+    <div id="principal" class="md:w-5/12 xl:w-4/12 mx-auto md:w border-2 rounded-md border-indigo-500 p-4">
+      <h1 class="font-bold text-3xl">Time blocking ⌚</h1>
+      <p>Recuerda que si quieres crear un bloque para las 4 de la tarde,
+        entonces seleccionas 16h y no 4h, porque sería 4 am.</p>
+      <form>
+        
+          <label for="tarea" class="block font-bold mt-6">Tarea</label>
+          <input id="tarea" type="text"
+            class="block w-full px-4 py-2 border-2 rounded-md border-indigo-500 leading-tight text-gray-700 appearance-none focus:outline-none focus:border-indigo-400"
+            placeholder="Ej: Estudiar programación" autocomplete="off" required />
+        
+        
+          <label for="hi" class="block font-bold mt-6">Hora de inicio</label>
+          <span class="block text-sm text-gray-500">Deben ser bloques, no puedes poner intermedios como 6:30,
+            9:12.</span>
+          <input id="hi" type="time"
+            class="block w-full px-4 py-2 border-2 rounded-md border-indigo-500 leading-tight text-gray-700 appearance-none focus:outline-none focus:border-indigo-400"
+            placeholder="Ej: 16:00" required />
+
+        
+          <label for="hf" class="block font-bold mt-6">Hora de fin</label>
+          <span class="block text-sm text-gray-500">Lo puedes dejar vacío si solo quieres un bloque de una hora.</span>
+          <input id="hf" type="time"
+            class="block w-full px-4 py-2 border-2 rounded-md border-indigo-500 leading-tight text-gray-700 appearance-none focus:outline-none focus:border-indigo-400"
+            placeholder="Ej: 16:00" />
+
+
+        
+          <label for="dia" class="block font-bold mt-6">Día de la semana</label>
+          <select id="dia"
+            class="block w-full px-4 py-2 border-2 rounded-md border-indigo-500 leading-tight text-gray-700 appearance-none focus:outline-none focus:border-indigo-400"
+            required>
+            <option value="Lunes">Lunes</option>
+            <option value="Martes">Martes</option>
+            <option value="Miércoles">Miércoles</option>
+            <option value="Jueves">Jueves</option>
+            <option value="Viernes">Viernes</option>
+            <option value="Sábado">Sábado</option>
+            <option value="Domingo">Domingo</option>
+          </select>
+
+        
+          <button type="submit" class=" mt-6 w-full px-4 py-2 rounded-md text-white font-bold bg-indigo-500">Crear</button>
+      </form>
     </div>
 
-    <!-- Add more scripts here -->
-    <script type="module" src="%PUBLIC_URL%/_dist_/index.js"></script>
-  </body>
+    <div id="tabla" class="w-7/12 max-w-8/12">
+      <table>
+        <thead>
+          <tr>
+            <th class="px-4 py-2"></th>
+            <th class="text-center px-4 py-2">Lunes</th>
+            <th class="text-center px-4 py-2">Martes</th>
+            <th class="text-center px-4 py-2">Miércoles</th>
+            <th class="text-center px-4 py-2">Jueves</th>
+            <th class="text-center px-4 py-2">Viernes</th>
+            <th class="text-center px-4 py-2">Sábado</th>
+            <th class="text-center px-4 py-2">Domingo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center px-4 py-2 font-semibold text-sm" id="hora">08:00 am</td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200 "></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+          </tr>
+          <tr>
+            <td class="text-center px-4 py-2 font-semibold text-sm" id="hora">09:00 am</td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+          </tr>
+          <tr>
+            <td class="text-center px-4 py-2 font-semibold text-sm" id="hora">10:00 am</td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+          </tr>
+          <tr>
+            <td class="text-center px-4 py-2 font-semibold text-sm" id="hora">11:00 am</td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+          </tr>
+          <tr>
+            <td class="text-center px-4 py-2 font-semibold text-sm" id="hora">12:00 pm</td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+          </tr>
+          <tr>
+            <td class="text-center px-4 py-2 font-semibold text-sm" id="hora">01:00 pm</td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200 "></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+          </tr>
+          <tr>
+            <td class="text-center px-4 py-2 font-semibold text-sm" id="hora">02:00 pm</td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+          </tr>
+          <tr>
+            <td class="text-center px-4 py-2 font-semibold text-sm" id="hora">03:00 pm</td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+          </tr>
+          <tr>
+            <td class="text-center px-4 py-2 font-semibold text-sm" id="hora">04:00 pm</td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+          </tr>
+          <tr>
+            <td class="text-center px-4 py-2 font-semibold text-sm" id="hora">05:00 pm</td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+          </tr>
+          <tr>
+            <td class="text-center px-4 py-2 font-semibold text-sm" id="hora">06:00 pm</td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+          </tr>
+          <tr>
+            <td class="text-center px-4 py-2 font-semibold text-sm" id="hora">07:00 pm</td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+          </tr>
+          <tr>
+            <td class="text-center px-4 py-2 font-semibold text-sm" id="hora">08:00 pm</td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+            <td class="text-center px-4 py-2 border-2 border-gray-200"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+
+  </main>
+
+  <!-- Add more scripts here -->
+  <script type="module" src="%PUBLIC_URL%/_dist_/index.js"></script>
+</body>
+
 </html>

@@ -1,4 +1,5 @@
 {
+  "homepage": "https://nicolasarevalo.github.io/time-blocking",
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
