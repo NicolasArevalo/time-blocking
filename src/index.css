@@ -1,3 +1,7 @@
 @import 'tailwindcss/dist/base.css';
 @import 'tailwindcss/dist/components.css';
 @import 'tailwindcss/dist/utilities.css';
+
+p::selection, h1::selection, label::selection, span::selection, th::selection, td::selection, input::selection, select::selection, textarea::selection, button::selection, a::selection {
+    background: #a5b4fc;
+}
