@@ -5,3 +5,16 @@
 p::selection, h1::selection, label::selection, span::selection, th::selection, td::selection, input::selection, select::selection, textarea::selection, button::selection, a::selection {
     background: #a5b4fc;
 }
+td{
+    width: 100px;
+    max-width: 150px;
+}
+#principal{
+    height: 582px;
+}
+
+@media screen and (max-width: 768px) {
+    #principal{
+        height: auto;
+    }    
+}
